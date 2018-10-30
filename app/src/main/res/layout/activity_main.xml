@@ -4,15 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
+    tools:context=".mvp.view.activity.MainActivity">
+<com.gank.zz.gankmvp.widget.NoScrollViewPager
+    android:id="@+id/NSViewPager"
+    app:layout_constraintTop_toTopOf="parent"
+    android:layout_width="match_parent"
+    app:layout_constraintBottom_toTopOf="@id/mBottomNavigation"
+    android:layout_height="0dp"/>
+    <View
+        app:layout_constraintBottom_toTopOf="@id/mBottomNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#F0F0F0" />
+    <me.majiajie.pagerbottomtabstrip.PageNavigationView
+        android:id="@+id/mBottomNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        app:layout_constraintRight_toRightOf="parent" />
 </android.support.constraint.ConstraintLayout>
