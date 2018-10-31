@@ -30,6 +30,7 @@ data class TodayData(
             @SerializedName("福利")
             val welfare: List<Gank>
     )
+
     data class HomeType(val homeType: List<String>) : Visitable {
         override fun type(typeFactory: TypeFactory): Int {
             return typeFactory.type(this)
@@ -43,6 +44,20 @@ data class TodayData(
             val image3: String = "https://ws1.sinaimg.cn/large/0065oQSqly1fw0vdlg6xcj30j60mzdk7.jpg",
             val image4: String = "https://ws1.sinaimg.cn/large/0065oQSqly1fv5n6daacqj30sg10f1dw.jpg",
             val image5: String = "https://ws1.sinaimg.cn/large/0065oQSqly1fuo54a6p0uj30sg0zdqnf.jpg") : Visitable {
+        override fun type(typeFactory: TypeFactory): Int {
+            return typeFactory.type(this)
+        }
+    }
+
+    //gank标题的数据
+    data class HomeGankTitle(val title: String) : Visitable {
+        override fun type(typeFactory: TypeFactory): Int {
+            return typeFactory.type(this)
+        }
+    }
+
+    //Gank的数据
+    data class HomeGankList(val gankList: Gank) : Visitable {
         override fun type(typeFactory: TypeFactory): Int {
             return typeFactory.type(this)
         }

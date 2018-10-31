@@ -15,8 +15,15 @@ import com.gank.zz.gankmvp.mvp.model.TodayData
 interface TypeFactory {
     //首页轮播图
     fun type(results: TodayData.HomeBanner): Int
+
     //首页各种类型
     fun type(type: TodayData.HomeType): Int
+
+    //首页gank的标题
+    fun type(type: TodayData.HomeGankTitle): Int
+
+    //首页的gank数据
+    fun type(type: TodayData.HomeGankList): Int
 
     fun createViewHolder(type: Int, itemView: View): BaseViewHolder<Visitable>
 

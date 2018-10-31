@@ -3,7 +3,6 @@ package com.gank.zz.gankmvp.mvp.view.fragment
 import android.support.v7.widget.LinearLayoutManager
 import com.gank.zz.gankmvp.R
 import com.gank.zz.gankmvp.adapter.homeadapter.HomeAdapter
-import com.gank.zz.gankmvp.adapter.homeadapter.model.Visitable
 import com.gank.zz.gankmvp.base.BaseFragment
 import com.gank.zz.gankmvp.mvp.contract.HomeContract
 import com.gank.zz.gankmvp.mvp.model.TodayData
@@ -17,16 +16,10 @@ import kotlinx.android.synthetic.main.fragment_home.*
  * desc   : 主页
  */
 
-class HomeFragment : BaseFragment(),HomeContract.View{
-    private val dataAll = ArrayList<Visitable>()
-    private val adapter by lazy { HomeAdapter(dataAll) }
+class HomeFragment : BaseFragment(), HomeContract.View {
+    private val adapter by lazy { HomeAdapter() }
     override fun getTodayData(data: TodayData) {
-        dataAll.clear()
-        val homeType = TodayData.HomeType(data.category)
-        val homeBanner = TodayData.HomeBanner()
-        dataAll.add(homeBanner)
-        dataAll.add(homeType)
-        adapter.notifyDataSetChanged()
+        adapter.upData(data)
     }
 
     override fun showLoading() {
@@ -35,7 +28,7 @@ class HomeFragment : BaseFragment(),HomeContract.View{
     override fun dismissLoading() {
     }
 
-    private val presenter by lazy { HomePresenter(this,this) }
+    private val presenter by lazy { HomePresenter(this, this) }
 
     override fun layoutId(): Int = R.layout.fragment_home
 
