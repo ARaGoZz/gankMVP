@@ -27,7 +27,7 @@ class MainActivity : BaseActivity() {
 
         initFragment()
 
-        NSViewPager.adapter = MyViewPagerAdapter(supportFragmentManager,mList)
+        NSViewPager.adapter = MyViewPagerAdapter(supportFragmentManager, mList)
         //自动适配ViewPager页面切换
         bottomBar.setupWithViewPager(NSViewPager)
     }

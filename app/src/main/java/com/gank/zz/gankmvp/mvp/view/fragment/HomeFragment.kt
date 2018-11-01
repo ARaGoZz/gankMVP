@@ -7,12 +7,8 @@ import com.gank.zz.gankmvp.base.BaseFragment
 import com.gank.zz.gankmvp.mvp.contract.HomeContract
 import com.gank.zz.gankmvp.mvp.model.TodayData
 import com.gank.zz.gankmvp.mvp.presenter.HomePresenter
-import com.scwang.smartrefresh.layout.SmartRefreshLayout
-import com.scwang.smartrefresh.layout.listener.OnRefreshListener
 import kotlinx.android.synthetic.main.fragment_home.*
-import com.scwang.smartrefresh.layout.api.RefreshLayout
-import com.gank.zz.gankmvp.R.id.refreshLayout
-
+import com.gank.zz.gankmvp.utils.ToastUtils
 
 
 /**
@@ -21,11 +17,12 @@ import com.gank.zz.gankmvp.R.id.refreshLayout
  * time   : 2018/10/26
  * desc   : 主页
  */
-
+//TODO 首页的CollapsingToolbarLayout
 class HomeFragment : BaseFragment(), HomeContract.View {
     private val adapter by lazy { HomeAdapter() }
     override fun getTodayData(data: TodayData) {
         adapter.upData(data)
+        //等到数据刷新停止
         refreshLayout.finishRefresh()
     }
 
@@ -40,13 +37,14 @@ class HomeFragment : BaseFragment(), HomeContract.View {
     override fun layoutId(): Int = R.layout.fragment_home
 
     override fun initView() {
+        //上拉刷新
         refreshLayout.setOnRefreshListener {
             presenter.getTodayData()
         }
-//        refreshLayout.setOnLoadMoreListener{
-//            it.finishLoadMore(2000)
-//
-//        }
+        //TODO 点击搜索弹出界面
+        ivSearch.setOnClickListener {
+            ToastUtils.makeToastShort("搜索")
+        }
     }
 
     override fun initData() {
