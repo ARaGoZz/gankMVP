@@ -148,21 +148,22 @@ class HomeGankTitleViewHolder(view: View) : BaseViewHolder<TodayData.HomeGankTit
 class HomeGankListViewHolder(view: View) : BaseViewHolder<TodayData.HomeGankList>(view) {
     override fun setUpView(model: TodayData.HomeGankList, position: Int, adapter: HomeAdapter) {
         setText(R.id.tvContent, model.gankList.desc)
-        val imageView = getView<ImageView>(R.id.ivContent)
-        val imageUrl = model.gankList.images?.let {
-            if (it.isNotEmpty()) {
-                it[0].toString()
-            } else {
-                ""
-            }
-        }
-        Glide.with(itemView.context)
-                .load(imageUrl)
-                .into(imageView)
-        if (imageUrl.isNullOrEmpty()) {
-            imageView.visibility = View.GONE
-        } else {
-            imageView.visibility = View.VISIBLE
-        }
+        //都是动态图，不加载了
+//        val imageView = getView<ImageView>(R.id.ivContent)
+//        val imageUrl = model.gankList.images?.let {
+//            if (it.isNotEmpty()) {
+//                it[0].toString()
+//            } else {
+//                ""
+//            }
+//        }
+//        Glide.with(itemView.context)
+//                .load(imageUrl)
+//                .into(imageView)
+//        if (imageUrl.isNullOrEmpty()) {
+//            imageView.visibility = View.GONE
+//        } else {
+//            imageView.visibility = View.VISIBLE
+//        }
     }
 }

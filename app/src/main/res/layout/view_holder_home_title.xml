@@ -1,13 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="50dp">
+    android:layout_height="50dp"
+    android:background="@color/white"
+    android:gravity="center"
+    android:orientation="vertical">
+
 
     <TextView
-        android:layout_marginStart="20dp"
         android:id="@+id/tvTitle"
-        android:textStyle="bold"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center|start" />
+        android:layout_height="0dp"
+        android:layout_marginStart="20dp"
+        android:layout_weight="1"
+        android:drawableStart="@mipmap/flower"
+        android:drawablePadding="10dp"
+        android:gravity="center|start"
+        android:textColor="@color/colorPrimary"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <include layout="@layout/line_horizontal" />
 </LinearLayout>

@@ -39,10 +39,10 @@ data class TodayData(
 
     //放几张图当首页轮播图
     data class HomeBanner(
-            val image1: String = "https://ws1.sinaimg.cn/large/0065oQSqgy1fwgzx8n1syj30sg15h7ew.jpg",
+            val image1: String = "https://ws1.sinaimg.cn/large/0065oQSqly1fv5n6daacqj30sg10f1dw.jpg",
             val image2: String = "https://ws1.sinaimg.cn/large/0065oQSqly1fw8wzdua6rj30sg0yc7gp.jpg",
             val image3: String = "https://ws1.sinaimg.cn/large/0065oQSqly1fw0vdlg6xcj30j60mzdk7.jpg",
-            val image4: String = "https://ws1.sinaimg.cn/large/0065oQSqly1fv5n6daacqj30sg10f1dw.jpg",
+            val image4: String = "http://ww1.sinaimg.cn/large/0065oQSqly1fsfq1k9cb5j30sg0y7q61.jpg",
             val image5: String = "https://ws1.sinaimg.cn/large/0065oQSqly1fuo54a6p0uj30sg0zdqnf.jpg") : Visitable {
         override fun type(typeFactory: TypeFactory): Int {
             return typeFactory.type(this)

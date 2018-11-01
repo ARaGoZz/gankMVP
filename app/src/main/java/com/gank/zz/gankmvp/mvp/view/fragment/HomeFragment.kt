@@ -7,7 +7,13 @@ import com.gank.zz.gankmvp.base.BaseFragment
 import com.gank.zz.gankmvp.mvp.contract.HomeContract
 import com.gank.zz.gankmvp.mvp.model.TodayData
 import com.gank.zz.gankmvp.mvp.presenter.HomePresenter
+import com.scwang.smartrefresh.layout.SmartRefreshLayout
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener
 import kotlinx.android.synthetic.main.fragment_home.*
+import com.scwang.smartrefresh.layout.api.RefreshLayout
+import com.gank.zz.gankmvp.R.id.refreshLayout
+
+
 
 /**
  * author : zhou
@@ -20,6 +26,7 @@ class HomeFragment : BaseFragment(), HomeContract.View {
     private val adapter by lazy { HomeAdapter() }
     override fun getTodayData(data: TodayData) {
         adapter.upData(data)
+        refreshLayout.finishRefresh()
     }
 
     override fun showLoading() {
@@ -33,6 +40,13 @@ class HomeFragment : BaseFragment(), HomeContract.View {
     override fun layoutId(): Int = R.layout.fragment_home
 
     override fun initView() {
+        refreshLayout.setOnRefreshListener {
+            presenter.getTodayData()
+        }
+//        refreshLayout.setOnLoadMoreListener{
+//            it.finishLoadMore(2000)
+//
+//        }
     }
 
     override fun initData() {
