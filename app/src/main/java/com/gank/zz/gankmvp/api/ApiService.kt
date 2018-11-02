@@ -1,9 +1,6 @@
 package com.gank.zz.gankmvp.api
 
-import com.gank.zz.gankmvp.mvp.model.ReadChildType
-import com.gank.zz.gankmvp.mvp.model.ReadData
-import com.gank.zz.gankmvp.mvp.model.ReadType
-import com.gank.zz.gankmvp.mvp.model.TodayData
+import com.gank.zz.gankmvp.mvp.model.*
 import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -38,6 +35,6 @@ interface ApiService {
 
     //分类数据: http://gank.io/api/data/数据类型/请求个数/第几页
     @GET("data/{category}/{pageCount}/{page}")
-    fun getGankData(@Path("category") category: String, @Path("pageCount") pageCount: Int, @Path("page") page: Int)
+    fun getGankData(@Path("category") category: String, @Path("pageCount") pageCount: Int, @Path("page") page: Int):Observable<GankData>
 
 }
