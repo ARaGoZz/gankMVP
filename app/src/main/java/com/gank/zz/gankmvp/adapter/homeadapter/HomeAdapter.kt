@@ -17,7 +17,6 @@ import com.gank.zz.gankmvp.mvp.model.Gank
 import com.gank.zz.gankmvp.mvp.model.TodayData
 import com.gank.zz.gankmvp.mvp.view.activity.GankActivity
 import com.gank.zz.gankmvp.mvp.view.activity.WebActivity
-import com.gank.zz.gankmvp.utils.ToastUtils
 import java.util.*
 import kotlin.collections.ArrayList
 

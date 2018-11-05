@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".mvp.view.activity.MainActivity">
 <com.gank.zz.gankmvp.widget.NoScrollViewPager
-    android:id="@+id/NSViewPager"
+    android:id="@+id/nViewPager"
     app:layout_constraintTop_toTopOf="parent"
     android:layout_width="match_parent"
     app:layout_constraintBottom_toTopOf="@id/mBottomNavigation"

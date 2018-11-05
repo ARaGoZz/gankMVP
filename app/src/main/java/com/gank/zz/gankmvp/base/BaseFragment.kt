@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.gank.zz.gankmvp.MyApp
 import com.trello.rxlifecycle2.components.support.RxFragment
 
 /**
@@ -29,4 +30,10 @@ abstract class BaseFragment : RxFragment() {
     abstract fun initView()
 
     abstract fun initData()
+
+    override fun onDestroy() {
+        super.onDestroy()
+        activity?.let { MyApp.getRefWatcher(it)?.watch(activity) }
+
+    }
 }

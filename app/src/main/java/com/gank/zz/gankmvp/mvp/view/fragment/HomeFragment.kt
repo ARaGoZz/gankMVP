@@ -7,8 +7,9 @@ import com.gank.zz.gankmvp.base.BaseFragment
 import com.gank.zz.gankmvp.mvp.contract.HomeContract
 import com.gank.zz.gankmvp.mvp.model.TodayData
 import com.gank.zz.gankmvp.mvp.presenter.HomePresenter
-import kotlinx.android.synthetic.main.fragment_home.*
 import com.gank.zz.gankmvp.utils.ToastUtils
+import com.tencent.bugly.crashreport.CrashReport
+import kotlinx.android.synthetic.main.fragment_home.*
 
 
 /**
@@ -19,9 +20,11 @@ import com.gank.zz.gankmvp.utils.ToastUtils
  */
 //TODO 首页的CollapsingToolbarLayout
 class HomeFragment : BaseFragment(), HomeContract.View {
-    private val adapter by lazy { HomeAdapter() }
+    //不能通过by lazy 否则会内存泄漏
+    private var adapter: HomeAdapter? = null
+
     override fun getTodayData(data: TodayData) {
-        adapter.upData(data)
+        adapter?.upData(data)
         //等到数据刷新停止
         refreshLayout.finishRefresh()
     }
@@ -50,8 +53,25 @@ class HomeFragment : BaseFragment(), HomeContract.View {
     override fun initData() {
         //放在onCreate请求可以在onDestroy内自动取消订阅
         presenter.getTodayData()
+
+        adapter = HomeAdapter()
         rvHome.layoutManager = LinearLayoutManager(activity)
         rvHome.adapter = adapter
+//        val leakThread = LeakThread()
+//        leakThread.start()
+        //测试bugly
+//        CrashReport.testJavaCrash()
     }
 
 }
+
+//class LeakThread : Thread() {
+//    override fun run() {
+////        try {
+//            Thread.sleep(6 * 60 * 1000)
+////        } catch (e: InterruptedException) {
+////            e.printStackTrace()
+////        }
+//
+//    }
+//}

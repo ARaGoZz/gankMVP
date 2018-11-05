@@ -27,9 +27,11 @@ class MainActivity : BaseActivity() {
 
         initFragment()
 
-        NSViewPager.adapter = MyViewPagerAdapter(supportFragmentManager, mList)
+        nViewPager.adapter = MyViewPagerAdapter(supportFragmentManager, mList)
         //自动适配ViewPager页面切换
-        bottomBar.setupWithViewPager(NSViewPager)
+        bottomBar.setupWithViewPager(nViewPager)
+        //保持存活的页面数量
+        nViewPager.offscreenPageLimit = mList.size
     }
 
     private fun initFragment() {
@@ -40,5 +42,7 @@ class MainActivity : BaseActivity() {
     }
 
     override fun initData() {
+//        val leakThread = LeakThread()
+//        leakThread.start()
     }
 }

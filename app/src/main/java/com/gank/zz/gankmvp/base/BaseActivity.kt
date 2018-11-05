@@ -1,6 +1,7 @@
 package com.gank.zz.gankmvp.base
 
 import android.os.Bundle
+import com.gank.zz.gankmvp.MyApp
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity
 
 /**
@@ -24,4 +25,8 @@ abstract class BaseActivity : RxAppCompatActivity() {
 
     abstract fun initData()
 
+    override fun onDestroy() {
+        super.onDestroy()
+        MyApp.getRefWatcher(this)?.watch(this)
+    }
 }
