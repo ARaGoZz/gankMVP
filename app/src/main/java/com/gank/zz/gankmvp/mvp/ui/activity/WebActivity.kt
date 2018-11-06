@@ -1,4 +1,4 @@
-package com.gank.zz.gankmvp.mvp.view.activity
+package com.gank.zz.gankmvp.mvp.ui.activity
 
 import com.gank.zz.gankmvp.R
 import com.gank.zz.gankmvp.base.BaseActivity

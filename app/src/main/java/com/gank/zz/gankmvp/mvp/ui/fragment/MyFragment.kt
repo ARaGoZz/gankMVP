@@ -1,4 +1,4 @@
-package com.gank.zz.gankmvp.mvp.view.fragment
+package com.gank.zz.gankmvp.mvp.ui.fragment
 
 import com.gank.zz.gankmvp.R
 import com.gank.zz.gankmvp.base.BaseFragment
@@ -11,12 +11,12 @@ import com.gank.zz.gankmvp.base.BaseFragment
  */
 
 class MyFragment : BaseFragment(){
+    override fun lazyLoad() {
+    }
+
     override fun layoutId(): Int = R.layout.fragment_my
 
     override fun initView() {
-    }
-
-    override fun initData() {
     }
 
 }

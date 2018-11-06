@@ -1,4 +1,4 @@
-package com.gank.zz.gankmvp.mvp.view.fragment
+package com.gank.zz.gankmvp.mvp.ui.fragment
 
 import android.support.v7.widget.LinearLayoutManager
 import com.gank.zz.gankmvp.R
@@ -8,7 +8,6 @@ import com.gank.zz.gankmvp.mvp.contract.HomeContract
 import com.gank.zz.gankmvp.mvp.model.TodayData
 import com.gank.zz.gankmvp.mvp.presenter.HomePresenter
 import com.gank.zz.gankmvp.utils.ToastUtils
-import com.tencent.bugly.crashreport.CrashReport
 import kotlinx.android.synthetic.main.fragment_home.*
 
 
@@ -20,7 +19,15 @@ import kotlinx.android.synthetic.main.fragment_home.*
  */
 //TODO 首页的CollapsingToolbarLayout
 class HomeFragment : BaseFragment(), HomeContract.View {
-    //不能通过by lazy 否则会内存泄漏
+    override fun lazyLoad() {
+        //放在onCreate请求可以在onDestroy内自动取消订阅
+        presenter.getTodayData()
+        adapter = HomeAdapter()
+        rvHome.layoutManager = LinearLayoutManager(activity)
+        rvHome.adapter = adapter
+    }
+
+    //之前的by lazy的写法有问题，会内存泄漏
     private var adapter: HomeAdapter? = null
 
     override fun getTodayData(data: TodayData) {
@@ -50,18 +57,11 @@ class HomeFragment : BaseFragment(), HomeContract.View {
         }
     }
 
-    override fun initData() {
-        //放在onCreate请求可以在onDestroy内自动取消订阅
-        presenter.getTodayData()
 
-        adapter = HomeAdapter()
-        rvHome.layoutManager = LinearLayoutManager(activity)
-        rvHome.adapter = adapter
 //        val leakThread = LeakThread()
 //        leakThread.start()
         //测试bugly
 //        CrashReport.testJavaCrash()
-    }
 
 }
 

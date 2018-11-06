@@ -15,8 +15,8 @@ import com.gank.zz.gankmvp.adapter.homeadapter.type.TypeFactory
 import com.gank.zz.gankmvp.adapter.homeadapter.type.TypeFactoryList
 import com.gank.zz.gankmvp.mvp.model.Gank
 import com.gank.zz.gankmvp.mvp.model.TodayData
-import com.gank.zz.gankmvp.mvp.view.activity.GankActivity
-import com.gank.zz.gankmvp.mvp.view.activity.WebActivity
+import com.gank.zz.gankmvp.mvp.ui.activity.GankActivity
+import com.gank.zz.gankmvp.mvp.ui.activity.WebActivity
 import java.util.*
 import kotlin.collections.ArrayList
 

@@ -6,7 +6,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.gank.zz.gankmvp.R
 import com.gank.zz.gankmvp.mvp.model.GankData
-import com.gank.zz.gankmvp.mvp.view.activity.WebActivity
+import com.gank.zz.gankmvp.mvp.ui.activity.WebActivity
 
 /**
  * author : zhou

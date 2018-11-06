@@ -15,25 +15,52 @@ import com.trello.rxlifecycle2.components.support.RxFragment
  */
 
 abstract class BaseFragment : RxFragment() {
+    /**
+     * 视图是否加载完毕
+     */
+    private var isView = false
+    /**
+     * 数据是否加载过了
+     */
+    private var isData = false
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(layoutId(), null)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        isView = true
         initView()
-        initData()
+        lazyData()
     }
 
     abstract fun layoutId(): Int
 
     abstract fun initView()
 
-    abstract fun initData()
-
     override fun onDestroy() {
         super.onDestroy()
         activity?.let { MyApp.getRefWatcher(it)?.watch(activity) }
 
+    }
+
+    /**
+     * 懒加载
+     */
+    abstract fun lazyLoad()
+
+    override fun setUserVisibleHint(isVisibleToUser: Boolean) {
+        super.setUserVisibleHint(isVisibleToUser)
+        if (isVisibleToUser){
+            //加载数据
+            lazyData()
+        }
+    }
+    private fun lazyData(){
+        if (userVisibleHint && isView && !isData){
+            lazyLoad()
+            isData = true
+        }
     }
 }

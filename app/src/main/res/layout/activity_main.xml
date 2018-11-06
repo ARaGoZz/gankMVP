@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".mvp.view.activity.MainActivity">
+    tools:context=".mvp.ui.activity.MainActivity">
 <com.gank.zz.gankmvp.widget.NoScrollViewPager
     android:id="@+id/nViewPager"
     app:layout_constraintTop_toTopOf="parent"

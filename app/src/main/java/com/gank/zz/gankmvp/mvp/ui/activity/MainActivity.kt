@@ -1,12 +1,12 @@
-package com.gank.zz.gankmvp.mvp.view.activity
+package com.gank.zz.gankmvp.mvp.ui.activity
 
 import android.support.v4.app.Fragment
 import com.gank.zz.gankmvp.R
 import com.gank.zz.gankmvp.adapter.MyViewPagerAdapter
 import com.gank.zz.gankmvp.base.BaseActivity
-import com.gank.zz.gankmvp.mvp.view.fragment.DiscoverFragment
-import com.gank.zz.gankmvp.mvp.view.fragment.HomeFragment
-import com.gank.zz.gankmvp.mvp.view.fragment.MyFragment
+import com.gank.zz.gankmvp.mvp.ui.fragment.DiscoverFragment
+import com.gank.zz.gankmvp.mvp.ui.fragment.HomeFragment
+import com.gank.zz.gankmvp.mvp.ui.fragment.MyFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import me.majiajie.pagerbottomtabstrip.NavigationController
 import java.util.ArrayList
