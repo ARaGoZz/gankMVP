@@ -22,13 +22,12 @@ class DiscoverFragment : BaseFragment(), DiscoverContract.View {
         presenter.getReadType()
     }
 
-    //    private val fragment by lazy { ReadFragment() }
     private val presenter by lazy { DiscoverPresenter(this, this) }
     private val tabTitleList = ArrayList<String>()
     private val fragmentList = ArrayList<Fragment>()
     override fun getReadType(data: ReadType) {
         data.results.mapTo(tabTitleList) { it.name }
-        data.results.mapTo(fragmentList){ReadFragment.getInstance(it.en_name)}
+        data.results.mapTo(fragmentList) { ReadFragment.getInstance(it.en_name) }
         vpRead.adapter = TabAdapter(childFragmentManager, fragmentList, tabTitleList)
         tbRead.setupWithViewPager(vpRead)
         vpRead.offscreenPageLimit = fragmentList.size

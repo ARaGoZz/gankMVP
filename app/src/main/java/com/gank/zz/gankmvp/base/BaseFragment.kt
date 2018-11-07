@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.classic.common.MultipleStatusView
 import com.gank.zz.gankmvp.MyApp
 import com.trello.rxlifecycle2.components.support.RxFragment
 
@@ -23,6 +24,11 @@ abstract class BaseFragment : RxFragment() {
      * 数据是否加载过了
      */
     private var isData = false
+
+    /**
+     * 切换布局状态
+     */
+    protected var mStatusView: MultipleStatusView? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(layoutId(), null)

@@ -15,6 +15,7 @@ import com.trello.rxlifecycle2.LifecycleProvider
 
 class HomePresenter(val view: HomeContract.View, lifecycleProvider: LifecycleProvider<*>) : BasePresenter(lifecycleProvider), HomeContract.Presenter {
     override fun getTodayData() {
+        view.showLoading()
         RetrofitClient.apiService.getTodayData()
                 .compose(RxUtils.schedulersTransformer())
                 .compose(lifecycleProvider.bindToLifecycle())

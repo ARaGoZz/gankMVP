@@ -19,6 +19,7 @@ import kotlinx.android.synthetic.main.fragment_home.*
  */
 //TODO 首页的CollapsingToolbarLayout
 class HomeFragment : BaseFragment(), HomeContract.View {
+
     override fun lazyLoad() {
         //放在onCreate请求可以在onDestroy内自动取消订阅
         presenter.getTodayData()
@@ -33,10 +34,12 @@ class HomeFragment : BaseFragment(), HomeContract.View {
     override fun getTodayData(data: TodayData) {
         adapter?.upData(data)
         //等到数据刷新停止
+        mStatusView?.showContent()
         refreshLayout.finishRefresh()
     }
 
     override fun showLoading() {
+        mStatusView?.showLoading()
     }
 
     override fun dismissLoading() {
@@ -47,6 +50,8 @@ class HomeFragment : BaseFragment(), HomeContract.View {
     override fun layoutId(): Int = R.layout.fragment_home
 
     override fun initView() {
+        mStatusView = multipleStatusView
+
         //上拉刷新
         refreshLayout.setOnRefreshListener {
             presenter.getTodayData()
@@ -60,7 +65,7 @@ class HomeFragment : BaseFragment(), HomeContract.View {
 
 //        val leakThread = LeakThread()
 //        leakThread.start()
-        //测试bugly
+    //测试bugly
 //        CrashReport.testJavaCrash()
 
 }

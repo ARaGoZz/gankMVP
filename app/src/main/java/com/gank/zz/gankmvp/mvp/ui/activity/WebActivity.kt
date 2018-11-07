@@ -19,9 +19,10 @@ class WebActivity : BaseActivity() {
     override fun initView() {
         ivBack.setOnClickListener { finish() }
         tvTitle.text = intent.getStringExtra("title")
-        web.loadUrl(intent.getStringExtra("url"))
+
     }
 
     override fun initData() {
+        web.loadUrl(intent.getStringExtra("url"))
     }
 }

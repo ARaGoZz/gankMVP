@@ -27,6 +27,7 @@
         </activity>
         <activity android:name=".mvp.ui.activity.GankActivity" />
         <activity android:name=".mvp.ui.activity.WebActivity" />
+        <activity android:name=".mvp.ui.activity.ReadDetailActivity" />
     </application>
 
 </manifest>
