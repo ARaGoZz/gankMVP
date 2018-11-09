@@ -21,7 +21,6 @@ class DiscoverFragment : BaseFragment(), DiscoverContract.View {
         presenter.getReadType()
     }
 
-    //    private val fragment by lazy { ReadFragment() }
     private val presenter by lazy { DiscoverPresenter(this, this) }
     private val tabTitleList = ArrayList<String>()
     private val fragmentList = ArrayList<Fragment>()

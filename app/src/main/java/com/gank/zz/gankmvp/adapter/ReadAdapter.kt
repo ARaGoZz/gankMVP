@@ -20,6 +20,7 @@ class ReadAdapter(layoutResId: Int, data: MutableList<ReadChildType.Result>?) : 
             Glide.with(mContext)
                     .load(item.icon)
                     .into(getView(R.id.ivReadTitle))
+            addOnClickListener(R.id.llRead)
         }
     }
 }

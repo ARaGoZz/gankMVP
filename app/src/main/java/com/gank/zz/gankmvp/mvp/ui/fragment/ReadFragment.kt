@@ -1,14 +1,15 @@
 package com.gank.zz.gankmvp.mvp.ui.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
-import android.util.Log
 import com.gank.zz.gankmvp.R
 import com.gank.zz.gankmvp.adapter.ReadAdapter
 import com.gank.zz.gankmvp.base.BaseFragment
 import com.gank.zz.gankmvp.mvp.contract.ReadContract
 import com.gank.zz.gankmvp.mvp.model.ReadChildType
 import com.gank.zz.gankmvp.mvp.presenter.ReadPresenter
+import com.gank.zz.gankmvp.mvp.ui.activity.ReadDetailActivity
 import kotlinx.android.synthetic.main.fragment_read.*
 
 /**
@@ -21,7 +22,7 @@ import kotlinx.android.synthetic.main.fragment_read.*
 class ReadFragment : BaseFragment(), ReadContract.View {
     override fun lazyLoad() {
         if (!category.isNullOrEmpty()) {
-            presenter.getReadChildType(category)
+            presenter.getReadChildType(category!!)
         }
     }
 
@@ -34,6 +35,13 @@ class ReadFragment : BaseFragment(), ReadContract.View {
             rvRead.layoutManager = LinearLayoutManager(activity)
             adapter = ReadAdapter(R.layout.item_read, list)
             rvRead.adapter = adapter
+            //没有使用参数 在kotlin中用 _ 代替
+            adapter?.setOnItemChildClickListener { _, _, position ->
+                val intent = Intent(activity, ReadDetailActivity::class.java)
+                intent.putExtra("id", list[position].id)
+                intent.putExtra("title", list[position].title)
+                startActivity(intent)
+            }
         }
 
     }
@@ -44,7 +52,7 @@ class ReadFragment : BaseFragment(), ReadContract.View {
     override fun dismissLoading() {
     }
 
-    private lateinit var category: String
+    private var category: String? = null
 
     companion object {
         fun getInstance(category: String): ReadFragment {
@@ -61,6 +69,7 @@ class ReadFragment : BaseFragment(), ReadContract.View {
     }
 
     override fun initView() {
+
     }
 
 }

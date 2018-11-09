@@ -20,5 +20,6 @@ class NoScrollViewPager @JvmOverloads constructor(context: Context, attrs: Attri
     override fun onInterceptTouchEvent(ev: MotionEvent?): Boolean {
         return false
     }
+
 }
 

@@ -96,10 +96,10 @@ class HomeAdapter : BaseQuickAdapter<Visitable, BaseViewHolder<Visitable>>(0) {
 class HomeBannerViewHolder(view: View) : BaseViewHolder<TodayData.HomeBanner>(view) {
     override fun setUpView(model: TodayData.HomeBanner, position: Int, adapter: HomeAdapter) {
         val bgaBanner: BGABanner = getView(R.id.banner)
-        bgaBanner.setAdapter { banner, view, model, position ->
+        bgaBanner.setAdapter { banner, _, url, i ->
             Glide.with(itemView.context)
-                    .load(model)
-                    .into(banner.getItemImageView(position))
+                    .load(url)
+                    .into(banner.getItemImageView(i))
         }
         bgaBanner.setData(Arrays.asList(model.image1, model.image2, model.image3, model.image4, model.image5), Arrays.asList())
     }
@@ -150,7 +150,7 @@ class HomeGankListViewHolder(view: View) : BaseViewHolder<TodayData.HomeGankList
                 .setOnClickListener {
                     val intent = Intent(itemView.context, WebActivity::class.java)
                     intent.putExtra("title", model.gankList.desc)
-                    intent.putExtra("url",model.gankList.url)
+                    intent.putExtra("url", model.gankList.url)
                     itemView.context.startActivity(intent)
                 }
         //都是动态图，不加载了
