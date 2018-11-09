@@ -1,6 +1,5 @@
 package com.gank.zz.gankmvp.mvp.ui.fragment
 
-import android.os.Bundle
 import android.support.v4.app.Fragment
 import com.gank.zz.gankmvp.R
 import com.gank.zz.gankmvp.adapter.TabAdapter
@@ -28,7 +27,7 @@ class DiscoverFragment : BaseFragment(), DiscoverContract.View {
     private val fragmentList = ArrayList<Fragment>()
     override fun getReadType(data: ReadType) {
         data.results.mapTo(tabTitleList) { it.name }
-        data.results.mapTo(fragmentList){ReadFragment.getInstance(it.en_name)}
+        data.results.mapTo(fragmentList) { ReadFragment.getInstance(it.en_name) }
         vpRead.adapter = TabAdapter(childFragmentManager, fragmentList, tabTitleList)
         tbRead.setupWithViewPager(vpRead)
         vpRead.offscreenPageLimit = fragmentList.size
