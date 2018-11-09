@@ -64,6 +64,8 @@ dependencies {
     implementation 'com.tencent.bugly:nativecrashreport:3.3.1' //其中latest.release指代最新Bugly NDK版本号，也可以指定明确的版本号，例如3.0
     //一个支持多种状态的自定义View
     implementation 'com.classic.common:multiple-status-view:1.5.1'
+    //权限管理类
+    implementation 'com.yanzhenjie:permission:2.0.0-rc12'
 }
 repositories {
     mavenCentral()

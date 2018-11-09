@@ -22,7 +22,7 @@ import kotlinx.android.synthetic.main.fragment_read.*
 class ReadFragment : BaseFragment(), ReadContract.View {
     override fun lazyLoad() {
         if (!category.isNullOrEmpty()) {
-            presenter.getReadChildType(category)
+            presenter.getReadChildType(category!!)
         }
     }
 
@@ -39,7 +39,7 @@ class ReadFragment : BaseFragment(), ReadContract.View {
             adapter?.setOnItemChildClickListener { _, _, position ->
                 val intent = Intent(activity, ReadDetailActivity::class.java)
                 intent.putExtra("id", list[position].id)
-                intent.putExtra("title",list[position].title)
+                intent.putExtra("title", list[position].title)
                 startActivity(intent)
             }
         }
@@ -52,7 +52,7 @@ class ReadFragment : BaseFragment(), ReadContract.View {
     override fun dismissLoading() {
     }
 
-    private lateinit var category: String
+    private var category: String? = null
 
     companion object {
         fun getInstance(category: String): ReadFragment {
