@@ -20,29 +20,12 @@ import kotlinx.android.synthetic.main.fragment_read.*
  */
 
 class ReadFragment : BaseFragment(), ReadContract.View {
-    override fun lazyLoad() {
-        if (!category.isNullOrEmpty()) {
-            presenter.getReadChildType(category!!)
-        }
-    }
-
     private val presenter by lazy { ReadPresenter(this, this) }
     private var adapter: ReadAdapter? = null
     private var list = ArrayList<ReadChildType.Result>()
     override fun getReadChildType(data: ReadChildType) {
         list = data.results as ArrayList<ReadChildType.Result>
-        activity?.let {
-            rvRead.layoutManager = LinearLayoutManager(activity)
-            adapter = ReadAdapter(R.layout.item_read, list)
-            rvRead.adapter = adapter
-            //没有使用参数 在kotlin中用 _ 代替
-            adapter?.setOnItemChildClickListener { _, _, position ->
-                val intent = Intent(activity, ReadDetailActivity::class.java)
-                intent.putExtra("id", list[position].id)
-                intent.putExtra("title", list[position].title)
-                startActivity(intent)
-            }
-        }
+        adapter?.addData(list)
 
     }
 
@@ -69,7 +52,26 @@ class ReadFragment : BaseFragment(), ReadContract.View {
     }
 
     override fun initView() {
+        activity?.let {
+            rvRead.layoutManager = LinearLayoutManager(activity)
+            adapter = ReadAdapter(R.layout.item_read, list)
+            rvRead.adapter = adapter
 
+            //没有使用参数 在kotlin中用 _ 代替
+            adapter?.setOnItemChildClickListener { _, _, position ->
+                val intent = Intent(activity, ReadDetailActivity::class.java)
+                intent.putExtra("id", list[position].id)
+                intent.putExtra("title", list[position].title)
+                startActivity(intent)
+            }
+
+        }
     }
 
+    override fun lazyLoad() {
+
+        if (!category.isNullOrEmpty()) {
+            presenter.getReadChildType(category!!)
+        }
+    }
 }

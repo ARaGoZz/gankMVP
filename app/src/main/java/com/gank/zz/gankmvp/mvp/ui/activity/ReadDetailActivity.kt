@@ -74,7 +74,6 @@ class ReadDetailActivity : BaseActivity(), ReadDetailContract.View {
     override fun initData() {
         getPresenter()
         tvTitle.text = intent.getStringExtra("title")
-
     }
 
     private fun getPresenter() {
