@@ -7,20 +7,12 @@ import com.squareup.leakcanary.RefWatcher
 import com.tencent.bugly.crashreport.CrashReport
 import com.tencent.bugly.crashreport.CrashReport.UserStrategy
 import java.io.BufferedReader
-import java.io.File
 import android.text.TextUtils
 import com.scwang.smartrefresh.layout.SmartRefreshLayout
 import java.io.FileReader
 import java.io.IOException
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter
-import com.scwang.smartrefresh.layout.api.RefreshLayout
-import com.scwang.smartrefresh.layout.api.RefreshFooter
-import com.scwang.smartrefresh.layout.api.DefaultRefreshFooterCreator
 import com.scwang.smartrefresh.layout.header.ClassicsHeader
-import com.scwang.smartrefresh.layout.api.RefreshHeader
-import com.scwang.smartrefresh.layout.api.DefaultRefreshHeaderCreator
-
-
 
 
 /**
@@ -38,11 +30,6 @@ class MyApp : Application() {
         fun getApp(): MyApp {
             return app
         }
-
-        fun getRefWatcher(context: Context): RefWatcher? {
-            return app.refWatcher
-        }
-
         fun initSmart(){
             //设置全局的Header构建器
             SmartRefreshLayout.setDefaultRefreshHeaderCreator { context, _ ->
@@ -56,12 +43,18 @@ class MyApp : Application() {
             }
         }
 
+        fun getRefWatcher(context: Context): RefWatcher? {
+            return app.refWatcher
+        }
+
+
     }
     private fun setupLeakCanary(): RefWatcher {
         return if (LeakCanary.isInAnalyzerProcess(this)) {
             RefWatcher.DISABLED
         } else LeakCanary.install(this)
     }
+
 
     override fun onCreate() {
         super.onCreate()
