@@ -3,6 +3,8 @@
     package="com.gank.zz.gankmvp">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
     <!-- SD 卡读写权限 -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -10,15 +12,26 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.READ_LOGS" />
+
     <application
-        android:name=".MyApp"
+        android:name="com.gank.zz.gankmvp.MyApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".mvp.ui.activity.MainActivity"
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.gank.zz.gankmvp.fileprovider"
+            android:enabled="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/filepath" />
+        </provider>
+        <activity
+            android:name="com.gank.zz.gankmvp.mvp.ui.activity.MainActivity"
             android:alwaysRetainTaskState="true"
             android:launchMode="singleTop">
             <intent-filter>
@@ -27,9 +40,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".mvp.ui.activity.GankActivity" />
-        <activity android:name=".mvp.ui.activity.WebActivity" />
-        <activity android:name=".mvp.ui.activity.ReadDetailActivity" />
+        <activity android:name="com.gank.zz.gankmvp.mvp.ui.activity.GankActivity" />
+        <activity android:name="com.gank.zz.gankmvp.mvp.ui.activity.WebActivity" />
+        <activity android:name="com.gank.zz.gankmvp.mvp.ui.activity.ReadDetailActivity" />
+
+
     </application>
 
 </manifest>

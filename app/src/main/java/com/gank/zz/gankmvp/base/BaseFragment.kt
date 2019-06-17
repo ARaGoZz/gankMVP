@@ -16,6 +16,9 @@ import com.trello.rxlifecycle2.components.support.RxFragment
  */
 
 abstract class BaseFragment : RxFragment() {
+    companion object {
+        const val GFO = 1
+    }
     /**
      * 视图是否加载完毕
      */
