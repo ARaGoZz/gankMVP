@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 *.iml
 .gradle
 /.idea
@@ -77,4 +76,4 @@ fastlane/Preview.html
 fastlane/screenshots
 fastlane/test_output
 fastlane/readme.md
->>>>>>> 2a87cb0f053f7c726c613c0e967306f6abe1772c
+
